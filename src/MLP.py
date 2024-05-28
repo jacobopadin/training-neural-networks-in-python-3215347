@@ -27,9 +27,22 @@ class Perceptron:
 
 #test code
 neuron = Perceptron(inputs=2)
+# inputs=2 these are the xi, bias=1.0 so when we multiply 
+# bias by the last weight we get the bias term, that is constant of course
 neuron.set_weights([10,10,-15]) #AND
 
 print("Gate:")
+
+'''
+neuron.run([0,0]) EXPLAINED
+first, it intializes the weights with random values and the bias with 1.0
+then, it sets the weights to [10,10,-15], so the bias is -15
+then, it runs the perceptron with the inputs [0,0], so
+we have the following calculation:
+x_sum = np.dot([0,0,1], [10,10,-15]) = 0*10 + 0*10 + 1*-15 = -15
+then, it returns the sigmoid of x_sum, that is 1/(1+np.exp(-(-15)))
+'''
+
 print ("0 0 = {0:.10f}".format(neuron.run([0,0])))
 print ("0 1 = {0:.10f}".format(neuron.run([0,1])))
 print ("1 0 = {0:.10f}".format(neuron.run([1,0])))
